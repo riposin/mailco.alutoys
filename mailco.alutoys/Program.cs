@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 using System.Threading.Tasks;
 
 namespace mailco.alutoys
 {
-	internal class Program
+	public static partial class Program
 	{
-		static void Main(string[] args)
+		static async Task Main(string[] args)
 		{
+			LogMessage("Aplicación iniciada.");
+			Console.WriteLine("Aplicación de copia de seguridad de correos, presione cualquier tecla para iniciar.");
+			Console.ReadKey();
+			DoOutlookProcess();
 		}
 	}
 }
