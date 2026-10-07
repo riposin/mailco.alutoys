@@ -8,10 +8,11 @@ namespace mailco.alutoys
 {
 	public static partial class Program
 	{
-		private static void DoOutlookProcess()
+		private static bool DoOutlookProcess()
 		{
 			string message = "";
 			bool endProcess = false;
+			bool isEndOk = true;
 			Result res = new Result();
 
 			while (!endProcess)
@@ -33,22 +34,20 @@ namespace mailco.alutoys
 						LogMessage("Fallo al cerrar Outlook: " + res.exception);
 						Console.WriteLine(message);
 						endProcess = Console.ReadKey().KeyChar.ToString().ToLower() == "x";
-						LogMessage(endProcess ? "Usuario solicito cancelar." : "Usuario solicitó continuar.");
+						LogMessage(endProcess ? "Usuario solicitó cancelar." : "Usuario solicitó reintentar.");
+						isEndOk = !endProcess;
+						Console.Clear();
 					}
-					Console.Clear();
 				}
 				else
 				{
-					message = "No está en ejecución.";
+					message = "Outlook no está en ejecución.";
 					LogMessage(message);
 					Console.WriteLine(message);
 					endProcess = true;
 				}
 			}
-			message = "Proceso completado, presione cualquier tecla para finalizar...";
-			LogMessage(message);
-			Console.WriteLine(message);
-			Console.ReadKey();
+			return isEndOk;
 		}
 		private static bool IsOutlookRunning()
 		{
