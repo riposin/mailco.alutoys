@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupOps.cs" />
+    <Compile Include="FileCopier.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="OutlookOps.cs" />
     <Compile Include="Program.cs" />

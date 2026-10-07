@@ -17,9 +17,10 @@ namespace mailco.alutoys
 			continueExecution = DoOutlookProcess();
 			if(continueExecution)
 			{
-				LogMessage("Proceso de copia de seguridad iniciado.");
-				Console.WriteLine("Proceso de copia de seguridad iniciado.");
-				//await DoBackupProcess();
+				message = "Proceso de copia de seguridad iniciado.";
+				LogMessage(message);
+				Console.WriteLine(message);
+				await DoBackupProcess();
 			}
 			else
 			{
